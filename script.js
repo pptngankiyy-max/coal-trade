@@ -1,5 +1,5 @@
 // Ganti URL ini dengan link dari Google Apps Script kamu
-const scriptURL = "https://script.google.com/macros/s/AKfycby.../exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbzP2U6cKHCc89ZOsiHjv0PG4NewKK_tfB8CqZVMu22OaPWEK7EobcZc7GxSQLGe6pI/exe";
 
 // Tampilkan form ketika klik tombol Pesan
 function pesanProduk(namaProduk, hargaProduk) {
