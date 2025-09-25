@@ -1,5 +1,5 @@
 // Ganti URL ini dengan link dari Google Apps Script kamu
-const scriptURL = "https://script.google.com/macros/s/AKfycbzP2U6cKHCc89ZOsiHjv0PG4NewKK_tfB8CqZVMu22OaPWEK7EobcZc7GxSQLGe6pI/exe";
+const scriptURL = "https://script.google.com/macros/s/AKfycbzP2U6cKHCc89ZOsiHjv0PG4NewKK_tfB8CqZVMu22OaPWEK7EobcZc7GxSQLGe6pI/exec";
 
 // Tampilkan form ketika klik tombol Pesan
 function pesanProduk(namaProduk, hargaProduk) {
@@ -18,13 +18,20 @@ function kirimPesanan(event) {
   const produk = document.getElementById("produk").value;
   const harga = document.getElementById("harga").value;
 
-  const data = { nama, hp, produk, harga, jumlah };
+  // Buat FormData agar bisa diterima Apps Script
+  const formData = new FormData();
+  formData.append("nama", nama);
+  formData.append("hp", hp);
+  formData.append("produk", produk);
+  formData.append("harga", harga);
+  formData.append("jumlah", jumlah);
 
   fetch(scriptURL, {
     method: "POST",
-    body: JSON.stringify(data),
+    body: formData,
   })
-    .then((res) => {
+    .then((res) => res.text())
+    .then((text) => {
       alert("✅ Pesanan berhasil dikirim & tersimpan di Google Sheets!");
       document.querySelector("#form-pemesanan form").reset();
       document.getElementById("form-pemesanan").classList.add("hidden");
