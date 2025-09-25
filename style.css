@@ -9,6 +9,7 @@
 body {
   background: url("https://images.unsplash.com/photo-1581090464777-85f0c75c32ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80") no-repeat center center/cover;
   color: #fff;
+  line-height: 1.6;
 }
 
 /* Header */
@@ -44,11 +45,17 @@ header p {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
   text-align: center;
   width: 250px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .produk:hover {
   transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+}
+
+.produk img {
+  width: 80px;
+  margin-bottom: 1rem;
 }
 
 .produk h2 {
@@ -62,6 +69,7 @@ header p {
   margin-bottom: 1rem;
 }
 
+/* Tombol */
 button {
   background: linear-gradient(45deg, #ff6a00, #ffb400);
   border: none;
@@ -107,4 +115,32 @@ form input {
   margin-top: 0.5rem;
   border-radius: 8px;
   border: none;
+  outline: none;
+}
+
+form input:focus {
+  border: 2px solid #ffb400;
+  box-shadow: 0 0 8px rgba(255, 180, 0, 0.7);
+}
+
+form button {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .produk-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+  }
+
+  .produk {
+    width: 90%;
+  }
 }
