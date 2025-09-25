@@ -1,0 +1,47 @@
+/* === FORM PEMESANAN === */
+#form-pemesanan {
+  background: rgba(0, 0, 0, 0.7);
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 400px;
+  border-radius: 12px;
+}
+
+#form-pemesanan h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+#form-pemesanan label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+#form-pemesanan input {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: none;
+}
+
+#form-pemesanan button {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  background: #28a745;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#form-pemesanan button:hover {
+  background: #218838;
+}
+
+.hidden {
+  display: none;
+}
