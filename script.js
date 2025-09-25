@@ -1,11 +1,14 @@
-// Fungsi untuk menampilkan form pemesanan
+// Ganti URL ini dengan link dari Google Apps Script kamu
+const scriptURL = "https://script.google.com/macros/s/AKfycby.../exec";
+
+// Tampilkan form ketika klik tombol Pesan
 function pesanProduk(namaProduk, hargaProduk) {
   document.getElementById("form-pemesanan").classList.remove("hidden");
   document.getElementById("produk").value = namaProduk;
   document.getElementById("harga").value = hargaProduk;
 }
 
-// Fungsi untuk kirim pesanan
+// Kirim data pesanan ke Google Sheets
 function kirimPesanan(event) {
   event.preventDefault();
 
@@ -15,17 +18,19 @@ function kirimPesanan(event) {
   const produk = document.getElementById("produk").value;
   const harga = document.getElementById("harga").value;
 
-  alert(
-    "📌 Ringkasan Pesanan:\n" +
-    "Nama: " + nama + "\n" +
-    "Nomor HP: " + hp + "\n" +
-    "Produk: " + produk + "\n" +
-    "Harga: " + harga + "\n" +
-    "Jumlah: " + jumlah + " Ton\n\n" +
-    "✅ Pesanan berhasil dikirim!"
-  );
+  const data = { nama, hp, produk, harga, jumlah };
 
-  // reset form
-  document.querySelector("#form-pemesanan form").reset();
-  document.getElementById("form-pemesanan").classList.add("hidden");
+  fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify(data),
+  })
+    .then((res) => {
+      alert("✅ Pesanan berhasil dikirim & tersimpan di Google Sheets!");
+      document.querySelector("#form-pemesanan form").reset();
+      document.getElementById("form-pemesanan").classList.add("hidden");
+    })
+    .catch((err) => {
+      alert("❌ Gagal menyimpan pesanan. Coba lagi!");
+      console.error(err);
+    });
 }
