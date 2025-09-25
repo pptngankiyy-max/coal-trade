@@ -5,7 +5,8 @@ const scriptURL = "https://script.google.com/macros/s/AKfycbzP2U6cKHCc89ZOsiHjv0
 function pesanProduk(namaProduk, hargaProduk) {
   document.getElementById("form-pemesanan").classList.remove("hidden");
   document.getElementById("produk").value = namaProduk;
-  document.getElementById("harga").value = hargaProduk;
+  document.getElementById("harga").value = `Rp ${parseInt(hargaProduk).toLocaleString("id-ID")}`;
+  document.getElementById("harga").dataset.value = hargaProduk; // simpan harga asli
 }
 
 // Kirim data pesanan ke Google Sheets
@@ -16,22 +17,15 @@ function kirimPesanan(event) {
   const hp = document.getElementById("hp").value;
   const jumlah = document.getElementById("jumlah").value;
   const produk = document.getElementById("produk").value;
-  const harga = document.getElementById("harga").value;
+  const harga = document.getElementById("harga").dataset.value; // ambil harga asli
 
-  // Buat FormData agar bisa diterima Apps Script
-  const formData = new FormData();
-  formData.append("nama", nama);
-  formData.append("hp", hp);
-  formData.append("produk", produk);
-  formData.append("harga", harga);
-  formData.append("jumlah", jumlah);
+  const data = { nama, hp, produk, harga, jumlah };
 
   fetch(scriptURL, {
     method: "POST",
-    body: formData,
+    body: JSON.stringify(data),
   })
-    .then((res) => res.text())
-    .then((text) => {
+    .then((res) => {
       alert("✅ Pesanan berhasil dikirim & tersimpan di Google Sheets!");
       document.querySelector("#form-pemesanan form").reset();
       document.getElementById("form-pemesanan").classList.add("hidden");
