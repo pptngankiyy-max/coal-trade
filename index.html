@@ -4,57 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jual Beli Batu Bara</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="gaya.css">
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <h1>🪨 Jual Beli Batu Bara</h1>
+    <h1>⚒️ Jual Beli Batu Bara</h1>
     <p>Platform sederhana untuk transaksi batu bara</p>
   </header>
 
-  <main>
-    <!-- Produk -->
-    <section class="produk-list">
-      <div class="produk">
-        <img src="https://images.unsplash.com/photo-1606146480735-4e78a6365d94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Batu Bara">
-        <h2>Batu Bara Kalori Tinggi</h2>
-        <p class="harga">Rp 1.200.000 / Ton</p>
-        <button onclick="pesanProduk('Batu Bara Kalori Tinggi', 'Rp 1.200.000 / Ton')">Pesan</button>
-      </div>
+  <!-- Produk -->
+  <section class="produk-container">
+    <div class="produk">
+      <img src="https://cdn-icons-png.flaticon.com/512/1519/1519900.png" alt="Batu Bara">
+      <h2>Batu Bara Kalori Tinggi</h2>
+      <p>Rp 1.200.000 / Ton</p>
+      <button onclick="pesanProduk('Batu Bara Kalori Tinggi', '1200000')">Pesan</button>
+    </div>
 
-      <div class="produk">
-        <img src="https://images.unsplash.com/photo-1615910334038-74d2c4aa885d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tambang Batu Bara">
-        <h2>Batu Bara Kalori Sedang</h2>
-        <p class="harga">Rp 900.000 / Ton</p>
-        <button onclick="pesanProduk('Batu Bara Kalori Sedang', 'Rp 900.000 / Ton')">Pesan</button>
-      </div>
-    </section>
+    <div class="produk">
+      <img src="https://cdn-icons-png.flaticon.com/512/1519/1519901.png" alt="Tambang Batu Bara">
+      <h2>Batu Bara Kalori Sedang</h2>
+      <p>Rp 900.000 / Ton</p>
+      <button onclick="pesanProduk('Batu Bara Kalori Sedang', '900000')">Pesan</button>
+    </div>
+  </section>
 
-    <!-- Form Pemesanan -->
-    <section id="form-pemesanan" class="hidden">
+  <!-- Form Pemesanan -->
+  <section id="form-pemesanan" class="hidden">
+    <form onsubmit="kirimPesanan(event)">
       <h2>Form Pemesanan</h2>
-      <form onsubmit="kirimPesanan(event)">
-        <label>Nama Lengkap</label>
-        <input type="text" id="nama" required>
 
-        <label>Nomor HP</label>
-        <input type="tel" id="hp" required>
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" name="nama" required>
 
-        <label>Jumlah (Ton)</label>
-        <input type="number" id="jumlah" min="1" required>
+      <label for="hp">Nomor HP</label>
+      <input type="text" id="hp" name="hp" required>
 
-        <input type="hidden" id="produk">
-        <input type="hidden" id="harga">
+      <label for="produk">Produk</label>
+      <input type="text" id="produk" name="produk" readonly>
 
-        <button type="submit">Kirim Pesanan</button>
-      </form>
-    </section>
-  </main>
+      <label for="harga">Harga</label>
+      <input type="text" id="harga" name="harga" readonly>
 
-  <footer>
-    <p>© 2025 Jual Beli Batu Bara | Projek Akhir</p>
-  </footer>
+      <label for="jumlah">Jumlah (Ton)</label>
+      <input type="number" id="jumlah" name="jumlah" required>
 
-  <script src="script.js"></script>
+      <button type="submit">Kirim Pesanan</button>
+    </form>
+  </section>
+
+  <!-- Script -->
+  <script src="skrip.js"></script>
 </body>
 </html>
